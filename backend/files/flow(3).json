@@ -1,0 +1,22 @@
+{
+  "owner": "ROBOT",
+  "step_id": 1,
+  "queue_id": "ETR",
+  "actions": [
+    {
+      "actionType": "EXECWB_CREATE_NEW_CHROME_DRIVER",
+      "driver_name_action": {
+        "actionType": "DATAB_S_STRING_BUILDER",
+        "value": "firefox_driver"
+      },
+      "accept_insecure_certs_action": {
+        "actionType": "DATAB_S_BOOL_BUILDER",
+        "value": true
+      },
+      "use_proxy_action": {
+        "actionType": "DATAB_S_BOOL_BUILDER",
+        "value": false
+      }
+    }
+  ]
+}

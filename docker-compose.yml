@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "45553:45553"
+    volumes:
+      - ./files:/app/files
+      - ./.git:/app/.git
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "45554:80"
+    restart: unless-stopped

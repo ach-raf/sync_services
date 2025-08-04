@@ -8,7 +8,8 @@ from utils.path_utils import get_safe_path, get_file_language, is_binary_file
 
 class FileManager:
     def __init__(self, files_directory: str = "files"):
-        self.base_path = Path.cwd() / files_directory
+        # Look for files directory in parent directory (project root)
+        self.base_path = Path.cwd().parent / files_directory
         self.base_path.mkdir(exist_ok=True)
     
     def list_files(self, relative_path: str = "") -> List[FileItem]:

@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 # Initialize services
 config = SyncConfig()
 file_manager = FileManager(config.files_directory)
-git_service = GitService()
+git_service = GitService("..")  # Look for Git repo in parent directory
 sync_service = SyncService(git_service, config)
 
 @asynccontextmanager

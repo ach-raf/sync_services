@@ -140,7 +140,7 @@ class GitService:
                 details=str(e)
             )
     
-    def push(self, remote: str = "origin", branch: str = "main") -> GitOperation:
+    def push(self, remote: str = "origin", branch: Optional[str] = None) -> GitOperation:
         """Push changes to remote repository."""
         if not self.is_repo_available():
             return GitOperation(
@@ -150,6 +150,10 @@ class GitService:
             )
         
         try:
+            # Use current branch if none specified
+            if branch is None:
+                branch = self.repo.active_branch.name
+            
             # Get the remote
             origin = self.repo.remote(remote)
             
@@ -226,7 +230,7 @@ class GitService:
                 details=error_msg
             )
     
-    def pull(self, remote: str = "origin", branch: str = "main") -> GitOperation:
+    def pull(self, remote: str = "origin", branch: Optional[str] = None) -> GitOperation:
         """Pull changes from remote repository."""
         if not self.is_repo_available():
             return GitOperation(
@@ -236,6 +240,10 @@ class GitService:
             )
         
         try:
+            # Use current branch if none specified
+            if branch is None:
+                branch = self.repo.active_branch.name
+            
             # Get the remote
             origin = self.repo.remote(remote)
             
